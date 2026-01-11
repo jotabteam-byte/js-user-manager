@@ -1,20 +1,18 @@
-# JS User Manager
+const API = "https://python-automation-eugz.onrender.com";
 
-Simple web application built with JavaScript to manage users.
+async function addUser() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
 
-## Features
-- Add users
-- List users
-- Simple interface
+  await fetch(API + "/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email }),
+  });
 
-## Technologies
-- HTML
-- CSS
-- JavaScript
-
-## Purpose
-This project was created as part of my learning journey in web development and to demonstrate my ability to build functional applications.
-
-## Author
-Johnatan Bruno
-
+  alert("User Registered!");
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+}
